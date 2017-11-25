@@ -1,5 +1,6 @@
 package com.smart.context;
 
+import com.smart.Car;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
