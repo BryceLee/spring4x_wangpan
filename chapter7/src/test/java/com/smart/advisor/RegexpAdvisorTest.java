@@ -12,6 +12,7 @@ public class RegexpAdvisorTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
         Waiter waiter = (Waiter) ctx.getBean("waiter1");
         waiter.greetTo("John");
+        System.out.println("------------------------------");
         waiter.serveTo("John");
     }
 }

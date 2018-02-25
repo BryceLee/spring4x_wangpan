@@ -8,19 +8,16 @@
     <bean id="waiterTarget" class="com.smart.advisor.Waiter"/>
     <bean id="sellerTarget" class="com.smart.advisor.Seller"/>
     <bean id="greetingAdvice" class="com.smart.advisor.GreetingBeforeAdvice"/>
-    <bean id="greetingAdvisor" class="com.smart.advisor.GreetingAdvisor"
-          p:advice-ref="greetingAdvice"/>
+    <bean id="greetingAdvisor" class="com.smart.advisor.GreetingAdvisor" p:advice-ref="greetingAdvice"/>
 
-    <bean id="parent" abstract="true"
-          class="org.springframework.aop.framework.ProxyFactoryBean"
+    <bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean"
           p:interceptorNames="greetingAdvisor" p:proxyTargetClass="true"/>
     <bean id="waiter" parent="parent" p:target-ref="waiterTarget"/>
     <bean id="seller" parent="parent" p:target-ref="sellerTarget"/>
 
 
     <!-- 正则表达式方法名匹配切面 -->
-    <bean id="regexpAdvisor"
-          class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+    <bean id="regexpAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
           p:advice-ref="greetingAdvice">
         <property name="patterns">
             <list>
@@ -28,8 +25,10 @@
             </list>
         </property>
     </bean>
+
     <bean id="waiter1" class="org.springframework.aop.framework.ProxyFactoryBean"
-          p:interceptorNames="regexpAdvisor" p:target-ref="waiterTarget"
+          p:target-ref="waiterTarget"
+          p:interceptorNames="regexpAdvisor"
           p:proxyTargetClass="true"/>
 
 
@@ -43,9 +42,9 @@
         </property>
     </bean>
 
-
     <bean id="waiter2" class="org.springframework.aop.framework.ProxyFactoryBean"
-          p:interceptorNames="dynamicAdvisor" p:target-ref="waiterTarget"
+          p:target-ref="waiterTarget"
+          p:interceptorNames="dynamicAdvisor"
           p:proxyTargetClass="true"/>
 
     <!-- 控制流程切面 -->

@@ -11,9 +11,13 @@ public class DynamicAdvisorTest {
         String configPath = "com/smart/advisor/beans.xml";
         ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
         Waiter waiter = (Waiter) ctx.getBean("waiter2");
+        System.out.println("--------------------------------------");
         waiter.serveTo("Peter");
+        System.out.println("--------------------------------------");
         waiter.greetTo("Peter");
+        System.out.println("--------------------------------------");
         waiter.serveTo("Peter");
+        System.out.println("--------------------------------------");
         waiter.greetTo("John");
     }
 }
