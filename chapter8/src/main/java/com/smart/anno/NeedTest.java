@@ -8,6 +8,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface NeedTest{
-	boolean value() default false;
+public @interface NeedTest {
+    boolean value() default false;
 }
