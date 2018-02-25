@@ -2,6 +2,6 @@ package com.smart.concept;
 
 public interface ForumDao {
 
-	void create(Forum forum);
+    void create(Forum forum);
 
 }

@@ -1,6 +1,8 @@
 
 package com.smart.aop;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -8,8 +10,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
 
 
 @Component
@@ -20,13 +20,12 @@ public class BeanSelfProxyAwareMounter implements SystemBootAddon, ApplicationCo
     private ApplicationContext applicationContext;
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-       this.applicationContext = applicationContext;
+        this.applicationContext = applicationContext;
     }
 
     public void onReady() {
-        Map<String, BeanSelfProxyAware> proxyAwareMap =
-                applicationContext.getBeansOfType(BeanSelfProxyAware.class);
-        if(proxyAwareMap!=null){
+        Map<String, BeanSelfProxyAware> proxyAwareMap = applicationContext.getBeansOfType(BeanSelfProxyAware.class);
+        if (proxyAwareMap != null) {
             for (BeanSelfProxyAware beanSelfProxyAware : proxyAwareMap.values()) {
                 beanSelfProxyAware.setSelfProxy(beanSelfProxyAware);
                 if (logger.isDebugEnabled()) {
