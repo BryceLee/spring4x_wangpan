@@ -6,6 +6,7 @@
 	<groupId>com.smart</groupId>
     <artifactId>chapter12</artifactId>
 	<version>1.0</version>
+    <packaging>war</packaging>
     <name>Spring4.x第十二章实例</name>
     <dependencies>
         <dependency>
@@ -44,6 +45,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

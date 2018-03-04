@@ -12,19 +12,19 @@ public class MixLayerUserService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @RequestMapping("/logon.do")  
+    @RequestMapping("/logon.do")
     @Transactional
-    public String logon(String userName,String password){
-        if(isRightUser(userName,password)){
-            String sql = "UPDATE t_user u SET u.score = u.score + ? WHERE user_name =?";
-            jdbcTemplate.update(sql,20,userName);
+    public String logon(String userName, String password) {
+        if (isRightUser(userName, password)) {
+            String sql = "UPDATE t_user u SET u.score = u.score + ? WHERE user_name = ?";
+            jdbcTemplate.update(sql, 20, userName);
             return "success";
-        }else{
+        } else {
             return "fail";
         }
     }
-    
-    private boolean isRightUser(String userName,String password){
+
+    private boolean isRightUser(String userName, String password) {
         //do sth
         return true;
     }

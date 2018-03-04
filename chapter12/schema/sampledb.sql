@@ -1,18 +1,19 @@
-DROP DATABASE IF EXISTS sampledb;
-CREATE DATABASE sampledb DEFAULT CHARACTER SET utf8;
-USE sampledb;
+DROP DATABASE IF EXISTS spring4x;
+CREATE DATABASE spring4x
+  DEFAULT CHARACTER SET utf8;
+USE spring4x;
 
 DROP TABLE IF EXISTS t_user;
-create table t_user(
-   user_name varchar(30) not null primary key,
-   password varchar(30) not null,
-   score int,
-   last_logon_time long
-)ENGINE=InnoDB; 
+CREATE TABLE t_user (
+  user_name       VARCHAR(30) NOT NULL PRIMARY KEY,
+  password        VARCHAR(30) NOT NULL,
+  score           INT,
+  last_logon_time LONG
+)
+  ENGINE = InnoDB;
 
-insert into t_user(user_name,password,score,last_logon_time)
-values('tom','123456',10,123213213);
-commit;
+INSERT INTO t_user (user_name, password, score, last_logon_time) VALUES ('tom', '123456', 10, 123213213);
+COMMIT;
 
 /*drop table t_dept;
 create table t_dept(

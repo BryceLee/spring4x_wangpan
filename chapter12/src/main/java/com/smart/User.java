@@ -1,21 +1,22 @@
 package com.smart;
 
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import java.lang.reflect.Field;
 import java.io.Serializable;
+import java.lang.reflect.Field;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
  * @author 陈雄华
  * @version 1.0
  */
 @Entity
-@Table(name="T_USER")
-public class User implements Serializable{
+@Table(name = "T_USER")
+public class User implements Serializable {
     @Id
     @Column(name = "USER_NAME")
     private String userName;
@@ -61,12 +62,14 @@ public class User implements Serializable{
     }
 
 
+    @Override
     public String toString() {
         return (new ReflectionToStringBuilder(this) {
+            @Override
             protected boolean accept(Field f) {
-                if(f.getType().isPrimitive() || f.getType() == String.class ){
+                if (f.getType().isPrimitive() || f.getType() == String.class) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             }
