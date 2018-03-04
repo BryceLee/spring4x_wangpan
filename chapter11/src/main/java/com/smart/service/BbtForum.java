@@ -1,13 +1,14 @@
 package com.smart.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.smart.dao.ForumDao;
 import com.smart.dao.PostDao;
 import com.smart.dao.TopicDao;
 import com.smart.domain.Forum;
 import com.smart.domain.Topic;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
@@ -20,7 +21,7 @@ public class BbtForum {
 
     public void addTopic(Topic topic) throws Exception {
         topicDao.addTopic(topic);
-//		if(true) throw new PessimisticLockingFailureException("fail");
+        //		if(true) throw new PessimisticLockingFailureException("fail");
         postDao.addPost(topic.getPost());
     }
 

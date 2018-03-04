@@ -6,6 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
-    @Transactional(propagation=Propagation.NOT_SUPPORTED)
-	public void addCredits(){}
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    public void addCredits() {}
 }

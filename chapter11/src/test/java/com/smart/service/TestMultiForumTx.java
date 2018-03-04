@@ -12,18 +12,18 @@ import org.testng.annotations.Test;
 @Transactional
 public class TestMultiForumTx extends AbstractTransactionalTestNGSpringContextTests {
 
-	@Autowired
-	public MultiForumService forumService;
+    @Autowired
+    public MultiForumService forumService;
 
-	@Test
-	public void testMultiForumTx() throws Throwable{
-		System.out.println("begin");
-		forumService.addTopic(null);
-		System.out.println("end");
-		
-		System.out.println("begin");
-		forumService.updateForum(null);
-		System.out.println("end");
-    	
+    @Test
+    public void testMultiForumTx() throws Throwable {
+        System.out.println("begin");
+        forumService.addTopic(null);
+        System.out.println("end");
+
+        System.out.println("begin");
+        forumService.updateForum(null);
+        System.out.println("end");
+
     }
 }
