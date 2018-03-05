@@ -1,11 +1,10 @@
 package com.smart.multithread;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.apache.commons.dbcp.BasicDataSource;
 
 /**
  * @author 陈雄华
@@ -31,8 +30,10 @@ public class UserService extends BaseService {
         updateLastLogonTime(userName);
         System.out.println("after userService.updateLastLogonTime method...");
 
-//      scoreService.addScore(userName, 20);
-        Thread myThread = new MyThread(this.scoreService, userName, 20);//使用一个新线程运行
+        // scoreService.addScore(userName, 20);
+
+        // 使用一个新线程运行
+        Thread myThread = new MyThread(this.scoreService, userName, 20);
         myThread.start();
     }
 
@@ -45,12 +46,14 @@ public class UserService extends BaseService {
         private ScoreService scoreService;
         private String userName;
         private int toAdd;
+
         private MyThread(ScoreService scoreService, String userName, int toAdd) {
             this.scoreService = scoreService;
             this.userName = userName;
             this.toAdd = toAdd;
         }
 
+        @Override
         public void run() {
             try {
                 Thread.sleep(2000);
@@ -68,11 +71,13 @@ public class UserService extends BaseService {
         UserService service = (UserService) ctx.getBean("userService");
 
         JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("jdbcTemplate");
-        //插入一条记录，初始分数为10
-        jdbcTemplate.execute("INSERT INTO t_user(user_name,password,score,last_logon_time) VALUES('tom','123456',10," + System.currentTimeMillis() + ")");
+        jdbcTemplate.execute("DELETE FROM t_user WHERE user_name='tom'");
+        // 插入一条记录，初始分数为10
+        String sql = "INSERT INTO t_user(user_name,password,score,last_logon_time) VALUES('tom','123456',10,"
+                + System.currentTimeMillis() + ")";
+        jdbcTemplate.execute(sql);
 
-
-        //调用工作在无事务环境下的服务类方法,将分数添加20分
+        // 调用工作在无事务环境下的服务类方法,将分数添加20分
         System.out.println("before userService.logon method...");
         service.logon("tom");
         System.out.println("after userService.logon method...");
