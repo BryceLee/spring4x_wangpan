@@ -14,28 +14,46 @@ import org.springframework.stereotype.Service;
  * @version 1.0
  */
 @Service("userService")
-public class UserService implements UserServiceInterface{
+public class UserService implements UserServiceInterface {
+
+    /**
+     * private method
+     */
     private void method1() {
         System.out.println("in method1");
     }
 
+    /**
+     * final method
+     */
     public final void method2() {
         System.out.println("in method2");
     }
 
+    /**
+     * static method
+     */
     public static void method3() {
         System.out.println("in method3");
     }
 
+    @Override
     public void method4() {
         System.out.println("in method4");
     }
 
+    /**
+     * final method
+     */
+    @Override
     public final void method5() {
         System.out.println("in method5");
     }
 
-    protected void method6(){
+    /**
+     * protected method
+     */
+    protected void method6() {
         System.out.println("in method6");
     }
 
@@ -52,29 +70,29 @@ public class UserService implements UserServiceInterface{
         System.out.println("after method2");
 
         System.out.println("before method3");
-        service.method3();
+        method3();
         System.out.println("after method3");
 
         System.out.println("before method4");
         service.method4();
         System.out.println("after method4");
 
-		System.out.println("before method5");
-		service.method5();
-		System.out.println("after method5");
+        System.out.println("before method5");
+        service.method5();
+        System.out.println("after method5");
 
-		System.out.println("before method6");
-		service.method6();
-		System.out.println("after method6");
+        System.out.println("before method6");
+        service.method6();
+        System.out.println("after method6");
 
-        //基于接口的动态代理
-//        UserServiceInterface service = (UserServiceInterface) ctx.getBean("userService");
-//        System.out.println("before method4");
-//        service.method4();
-//        System.out.println("after method4");
-//
-//        System.out.println("before method5");
-//        service.method5();
-//        System.out.println("after method5");
+        // 基于接口的动态代理
+        UserServiceInterface service2 = (UserServiceInterface) ctx.getBean("userService");
+        System.out.println("interface - before method4");
+        service2.method4();
+        System.out.println("interface - after method4");
+
+        System.out.println("interface - before method5");
+        service2.method5();
+        System.out.println("interface - after method5");
     }
 }
