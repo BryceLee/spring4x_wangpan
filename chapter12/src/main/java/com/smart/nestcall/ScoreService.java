@@ -1,16 +1,15 @@
 package com.smart.nestcall;
 
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.stereotype.Service;
 
 /**
  * @author 陈雄华
  * @version 1.0
  */
 @Service("scoreUserService")
-public class ScoreService extends BaseService{
+public class ScoreService extends BaseService {
 
     private JdbcTemplate jdbcTemplate;
 

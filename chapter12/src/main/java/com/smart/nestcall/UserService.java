@@ -1,11 +1,11 @@
 package com.smart.nestcall;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.apache.commons.dbcp.BasicDataSource;
 
 /**
  * @author 陈雄华
@@ -28,12 +28,18 @@ public class UserService extends BaseService {
         this.scoreService = scoreService;
     }
 
+    /**
+     * 该方法嵌套调用了本类的其它方法以及其它Service的方法
+     * @param userName
+     */
     public void logon(String userName) {
         System.out.println("before userService.updateLastLogonTime...");
+        // 调用本类的其它方法
         updateLastLogonTime(userName);
         System.out.println("after userService.updateLastLogonTime...");
-        
+
         System.out.println("before scoreService.addScore...");
+        // 调用其它Service的方法
         scoreService.addScore(userName, 20);
         System.out.println("after scoreService.addScore...");
 
@@ -49,11 +55,14 @@ public class UserService extends BaseService {
         UserService service = (UserService) ctx.getBean("userService");
 
         JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("jdbcTemplate");
+        jdbcTemplate.execute("DELETE FROM t_user WHERE user_name='tom'");
         BasicDataSource basicDataSource = (BasicDataSource) jdbcTemplate.getDataSource();
-        //插入一条记录，初始分数为10
-        jdbcTemplate.execute("INSERT INTO t_user(user_name,password,score,last_logon_time) VALUES('tom','123456',10," + System.currentTimeMillis() + ")");
+        // 插入一条记录，初始分数为10
+        String sql = "INSERT INTO t_user(user_name, password, score, last_logon_time) VALUES('tom', '123456', 10, "
+                + System.currentTimeMillis() + ")";
+        jdbcTemplate.execute(sql);
 
-        //调用工作在无事务环境下的服务类方法,将分数添加20分
+        // 调用工作在无事务环境下的服务类方法,将分数添加20分
         System.out.println("before userService.logon method...");
         service.logon("tom");
         System.out.println("after userService.logon method...");

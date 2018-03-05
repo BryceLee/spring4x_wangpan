@@ -5,30 +5,32 @@
        xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+
     <context:component-scan base-package="com.smart.nestcall"/>
-
     <context:property-placeholder location="classpath:jdbc.properties"/>
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close" 
-		p:driverClassName="${jdbc.driverClassName}"
-		p:url="${jdbc.url}" 
-		p:username="${jdbc.username}"
-		p:password="${jdbc.password}"/>
 
-    <bean id="jdbcTemplate"
-          class="org.springframework.jdbc.core.JdbcTemplate"
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"/>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
           p:dataSource-ref="dataSource"/>
 
-    <bean id="jdbcManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+    <bean id="jdbcManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
           p:dataSource-ref="dataSource"/>
 
     <aop:config proxy-target-class="true">
-        <aop:pointcut id="serviceJdbcMethod"
-                      expression="within(com.smart.nestcall.BaseService+)"/>
+        <!-- 为所有继承自BaseService类的所有子类的所有public方法都添加事务增强 -->
+        <aop:pointcut id="serviceJdbcMethod" expression="within(com.smart.nestcall.BaseService+)"/>
         <aop:advisor pointcut-ref="serviceJdbcMethod" advice-ref="jdbcAdvice" order="0"/>
     </aop:config>
+
     <tx:advice id="jdbcAdvice" transaction-manager="jdbcManager">
         <tx:attributes>
             <tx:method name="*"/>
