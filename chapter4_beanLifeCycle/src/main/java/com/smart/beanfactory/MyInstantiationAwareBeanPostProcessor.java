@@ -14,10 +14,8 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
      */
     @Override
     public Object postProcessBeforeInstantiation(Class beanClass, String beanName) throws BeansException {
-        if ("car".equals(beanName)) {
-            System.out.println(
-                    "MyInstantiationAwareBeanPostProcessor.postProcessBeforeInstantiation beanClass: " + beanClass);
-        }
+        System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessBeforeInstantiation beanClass: "
+                + beanClass + ", beanName: " + beanName);
         return null;
     }
 
@@ -28,9 +26,8 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
      */
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
-        if ("car".equals(beanName)) {
-            System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessAfterInstantiation bean: " + bean);
-        }
+        System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessAfterInstantiation bean: " + bean
+                + ", beanName: " + beanName);
         return true;
     }
 
@@ -42,10 +39,9 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
     public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean,
             String beanName) throws BeansException {
 
-        if ("car".equals(beanName)) {
-            System.out
-                    .println("MyInstantiationAwareBeanPostProcessor.postProcessPropertyValues PropertyValues: " + pvs);
-        }
+        System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessPropertyValues PropertyValues: " + pvs
+                + ", brand: " + pvs.getPropertyValue("brand").getValue() + ", maxSpeed: "
+                + pvs.getPropertyValue("maxSpeed").getValue());
         return pvs;
     }
 
@@ -56,9 +52,8 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
      */
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if ("car".equals(beanName)) {
-            System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessBeforeInitialization bean: " + bean);
-        }
+        System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessBeforeInitialization bean: " + bean
+                + ", beanName: " + beanName);
         return bean;
     }
 
@@ -69,9 +64,8 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
      */
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if ("car".equals(beanName)) {
-            System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessAfterInitialization bean: " + bean);
-        }
+        System.out.println("MyInstantiationAwareBeanPostProcessor.postProcessAfterInitialization bean: " + bean
+                + ", beanName: " + beanName);
         return bean;
     }
 }
