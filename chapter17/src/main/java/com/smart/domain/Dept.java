@@ -1,45 +1,44 @@
 package com.smart.domain;
 
 public class Dept {
-	private String deptId;
-	private String deptNo;
-	private String deptName;
-    
-	private Address address;
+    private String deptId;
+    private String deptNo;
+    private String deptName;
 
-	public String getDeptId() {
-		return deptId;
-	}
+    private Address address;
 
-	public void setDeptId(String deptId) {
-		this.deptId = deptId;
-	}
+    public String getDeptId() {
+        return deptId;
+    }
 
-	public Address getAddress() {
-		return address;
-	}
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+    public Address getAddress() {
+        return address;
+    }
 
-	public String getDeptNo() {
-		return deptNo;
-	}
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
-	public void setDeptNo(String deptNo) {
-		this.deptNo = deptNo;
-	}
+    public String getDeptNo() {
+        return deptNo;
+    }
 
-	public String getDeptName() {
-		return deptName;
-	}
+    public void setDeptNo(String deptNo) {
+        this.deptNo = deptNo;
+    }
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-	
-	
-	
-	
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+
+
 }

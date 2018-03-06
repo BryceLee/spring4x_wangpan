@@ -1,4 +1,3 @@
-
-function test(){
-   alert("here");
+function test() {
+    alert("here");
 }

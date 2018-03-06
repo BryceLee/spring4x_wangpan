@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @Controller
 public class MyHandlerExceptionResolver {
 
-	@ExceptionHandler(RuntimeException.class)
-	public String handleException(RuntimeException re, HttpServletRequest request) {
-		return "forward:error.jsp";
-	}
+    @ExceptionHandler(RuntimeException.class)
+    public String handleException(RuntimeException re, HttpServletRequest request) {
+        return "forward:error.jsp";
+    }
 }

@@ -13,11 +13,11 @@ public class MyWebSoketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(helloHandler(),"/chapter17/hello");
+        webSocketHandlerRegistry.addHandler(helloHandler(), "/chapter17/hello");
     }
 
     @Bean
-    public MyWebSocketHandler helloHandler(){
+    public MyWebSocketHandler helloHandler() {
         return new MyWebSocketHandler();
     }
 }
