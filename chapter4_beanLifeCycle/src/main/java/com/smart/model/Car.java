@@ -51,7 +51,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean, D
     }
 
     public void introduce() {
-        System.out.println("introduce:" + this.toString());
+        System.out.println("Introduce: " + this.toString());
     }
 
 
