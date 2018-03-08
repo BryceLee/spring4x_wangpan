@@ -195,12 +195,25 @@ public class UserController {
     // return mav;
     // }
 
+    /**
+     * 将请求报文体转换为 String 绑定到 RequestBody 入参中
+     * SpringMVC 底层会选中 StringHttpMessageConverter 并将请求体信息转换并将结果绑定到 String body 入参上
+     * @param body
+     * @return
+     */
     @RequestMapping(value = "/handle41")
     public String handle41(@RequestBody String body) {
         System.out.println(body);
         return "success";
     }
 
+    /**
+     * 读取一张图片，并将图片数据输出到响应流中，客户端将显示这张图片
+     * SpringMVC 底层会选中 ByteArrayHttpMessageConverter 对返回值进行处理：将图片数据流输出到客户端
+     * @param imageId
+     * @return
+     * @throws IOException
+     */
     @ResponseBody
     @RequestMapping(value = "/handle42/{imageId}")
     public byte[] handle42(@PathVariable("imageId") String imageId) throws IOException {
@@ -210,6 +223,12 @@ public class UserController {
         return fileData;
     }
 
+    /**
+     * HttpEntity 不但可以访问请求及响应报文体的数据，还可以访问请求和响应报文头的数据
+     * 使用 StringHttpMessageConverter 将请求报文体及报文头的信息绑定到 HttpEntity 中，在方法中可以对相应信息进行访问
+     * @param requestEntity
+     * @return
+     */
     @RequestMapping(value = "/handle43")
     public String handle43(HttpEntity<String> requestEntity) {
         long contentLen = requestEntity.getHeaders().getContentLength();
@@ -217,6 +236,12 @@ public class UserController {
         return "success";
     }
 
+    /**
+     * 在方法中创建 ResponseEntity<byte[]> 对象并返回，ByteArrayHttpMessageConverter 负责将其写出到响应流中
+     * @param imageId
+     * @return
+     * @throws Throwable
+     */
     @RequestMapping(value = "/handle44/{imageId}")
     public ResponseEntity<byte[]> handle44(@PathVariable("imageId") String imageId) throws Throwable {
         Resource res = new ClassPathResource("/image.jpg");
@@ -225,6 +250,12 @@ public class UserController {
         return responseEntity;
     }
 
+    /**
+     * 该方法如何知道请求消息的格式，在处理完成后，又根据什么确定响应消息的格式呢？
+     * 答案是：通过请求消息头的 Content-Type 及 Accept 属性确定。
+     * @param requestEntity
+     * @return
+     */
     @RequestMapping(value = "/handle51")
     public ResponseEntity<User> handle51(HttpEntity<User> requestEntity) {
         User user = requestEntity.getBody();

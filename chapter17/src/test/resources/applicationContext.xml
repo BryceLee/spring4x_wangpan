@@ -6,15 +6,12 @@
        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <!-- FreeMarker配置 -->
-    <bean id="freeMarkerConfiguration"
-          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
+    <bean id="freeMarkerConfiguration" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
           p:templateLoaderPath="/com/smart/ftl/"
           p:defaultEncoding="UTF-8"/>
 
 
-    <bean id="dataSource"
-          class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close"
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
           p:driverClassName="com.mysql.jdbc.Driver"
           p:url="jdbc:mysql://localhost:3306/sampledb?useUnicode=true"
           p:username="root"
