@@ -5,6 +5,7 @@ import org.springframework.core.convert.converter.Converter;
 
 public class StringToUserConverter implements Converter<String, User> {
 
+    @Override
     public User convert(String source) {
         User user = new User();
         if (source != null) {
