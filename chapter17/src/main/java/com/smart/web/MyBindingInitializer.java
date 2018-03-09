@@ -8,6 +8,8 @@ import com.smart.domain.User;
 import com.smart.domain.UserEditor;
 
 public class MyBindingInitializer implements WebBindingInitializer {
+
+    @Override
     public void initBinder(WebDataBinder binder, WebRequest request) {
         binder.registerCustomEditor(User.class, new UserEditor());
     }
