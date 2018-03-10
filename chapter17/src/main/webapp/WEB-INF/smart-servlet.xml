@@ -145,18 +145,17 @@
     </mvc:interceptors>
 
     <!-- 文件上传 -->
-    <bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
           p:defaultEncoding="UTF-8"
           p:maxUploadSize="5000000"
           p:uploadTempDir="file://d:/temp"/>
 
 
-    <!-- 静态资源映射-->
+    <!-- 静态资源映射 -->
     <mvc:default-servlet-handler/>
-    <bean id="rpe" class="com.smart.web.ResourcePathExposer"
-          init-method="init"/>
-    <mvc:resources mapping="#{rpe.resourceRoot}/**"
-                   location="/" cache-period="31536000"/>
+
+    <bean id="rpe" class="com.smart.web.ResourcePathExposer" init-method="init"/>
+
+    <mvc:resources mapping="#{rpe.resourceRoot}/**" location="/" cache-period="31536000"/>
 
 </beans>

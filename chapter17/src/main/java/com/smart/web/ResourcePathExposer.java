@@ -14,6 +14,7 @@ public class ResourcePathExposer implements ServletContextAware {
         getServletContext().setAttribute("resourceRoot", getServletContext().getContextPath() + resourceRoot);
     }
 
+    @Override
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
