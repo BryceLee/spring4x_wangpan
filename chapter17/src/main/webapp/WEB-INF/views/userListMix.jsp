@@ -9,20 +9,16 @@
 <fmt:message key="user.userList.title"/>
 <table>
     <c:forEach items="${userList}" var="user">
-    <tr>
-        <td>
-            <a href="<c:url value="/user/showUser/${user.userName}.html"/>">
-                    ${user.userName}
-            </a>
-        </td>
-        <td>
-                ${user.realName}
-        </td>
-        <td>
-            <fmt:formatDate value="${topic.createDate}" pattern="yyyy-MM-dd"/>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <a href="<c:url value="/user/showUser/${user.userName}.html"/>"> ${user.userName} </a>
+            </td>
+            <td> ${user.realName} </td>
+            <td>
+                <fmt:formatDate value="${topic.createDate}" pattern="yyyy-MM-dd"/>
+            </td>
+        </tr>
     </c:forEach>
-    <table>
+</table>
 </body>
 </html>

@@ -18,9 +18,8 @@
 
     <mvc:annotation-driven conversion-service="conversionService"/>
 
-    <!--国际化资源  -->
-    <bean id="messageSource"
-          class="org.springframework.context.support.ResourceBundleMessageSource">
+    <!-- 国际化资源 -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
                 <value>i18n/messages</value>
@@ -70,9 +69,9 @@
 
 
     <!-- FreeMarker基础设施及视图解析器配置 -->
-    <bean
-            class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
-            p:templateLoaderPath="/WEB-INF/ftl" p:defaultEncoding="UTF-8">
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
+          p:templateLoaderPath="/WEB-INF/ftl"
+          p:defaultEncoding="UTF-8">
         <property name="freemarkerSettings">
             <props>
                 <prop key="classic_compatible">true</prop>
@@ -80,34 +79,32 @@
         </property>
     </bean>
 
-    <bean
-            class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
-            p:order="5" p:suffix=".ftl" p:contentType="text/html; charset=utf-8"/>
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+          p:order="5" p:suffix=".ftl" p:contentType="text/html; charset=utf-8"/>
 
     <!-- Excel及PDF视图解析器配置 -->
-    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
-          p:order="10"/>
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="10"/>
     <bean id="userListExcel" class="com.smart.web.UserListExcelView"/>
     <bean id="userListPdf" class="com.smart.web.UserListPdfView"/>
 
     <!-- XMl及JSON视图解析器配置 -->
-    <bean id="userListJson"
-          class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
+    <bean id="userListJson" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
           p:modelKeys="userList"/>
 
-    <bean id="userListXml"
-          class="org.springframework.web.servlet.view.xml.MarshallingView"
-          p:modelKey="userList" p:marshaller-ref="xmlMarshaller"/>
+    <bean id="userListXml" class="org.springframework.web.servlet.view.xml.MarshallingView"
+          p:modelKey="userList"
+          p:marshaller-ref="xmlMarshaller"/>
 
     <!-- XML文件或国际化资源文件定义视图 -->
     <bean class="org.springframework.web.servlet.view.XmlViewResolver"
-          p:order="20" p:location="/WEB-INF/views/smart-views.xml"/>
+          p:order="20"
+          p:location="/WEB-INF/views/smart-views.xml"/>
 
     <bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver"
-          p:order="30" p:basename="/i18n/views"/>
+          p:order="30"
+          p:basename="/i18n/views"/>
 
-    <bean id="contentNegotiationManager"
-          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
           p:ignoreAcceptHeader="true"
           p:favorPathExtension="false"
           p:favorParameter="true"
@@ -121,6 +118,7 @@
             </value>
         </property>
     </bean>
+
     <!-- 协商多种视图解析器 -->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" p:order="0">
         <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
@@ -129,7 +127,8 @@
                 <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
                       p:modelKeys="userList"/>
                 <bean class="org.springframework.web.servlet.view.xml.MarshallingView"
-                      p:modelKey="userList" p:marshaller-ref="xmlMarshaller"/>
+                      p:modelKey="userList"
+                      p:marshaller-ref="xmlMarshaller"/>
             </list>
         </property>
     </bean>
