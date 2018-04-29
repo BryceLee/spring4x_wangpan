@@ -1,12 +1,10 @@
 package com.smart.i18n;
 
-import org.testng.annotations.*;
-
 import java.text.MessageFormat;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import static org.testng.Assert.*;
+import org.testng.annotations.Test;
 
 public class MessageFormatTest {
 
@@ -14,7 +12,7 @@ public class MessageFormatTest {
     public void format() {
         //①信息格式化串
         String pattern1 = "{0}，你好！你于{1}在工商银行存入{2} 元。";
-        String pattern2 = "At {1,time,short} On{1,date,long}，{0} paid {2,number, currency}.";
+        String pattern2 = "At {1,time,short} On {1,date,long}，{0} paid {2,number, currency}.";
 
         //②用于动态替换占位符的参数
         Object[] params = {"John", new GregorianCalendar().getTime(), 1.0E3};
