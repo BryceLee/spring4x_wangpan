@@ -1,8 +1,11 @@
 package com.smart.editor;
+
+import static org.testng.Assert.assertNotNull;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.testng.annotations.*;
-import static org.testng.Assert.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 public class CustomerEditorTest {
 	public ApplicationContext ctx = null;

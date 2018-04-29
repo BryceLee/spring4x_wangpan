@@ -7,8 +7,7 @@
     <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
         <property name="customEditors">
             <map>
-                <entry key="com.smart.editor.Car"
-                       value="com.smart.editor.CustomCarEditor"/>
+                <entry key="com.smart.editor.Car" value="com.smart.editor.CustomCarEditor"/>
             </map>
         </property>
     </bean>
