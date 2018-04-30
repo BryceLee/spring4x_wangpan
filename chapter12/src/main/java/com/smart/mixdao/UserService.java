@@ -63,7 +63,6 @@ public class UserService extends BaseService {
                 + System.currentTimeMillis() + ")";
         jdbcTemplate.execute(sql);
 
-        //调用工作在无事务环境下的服务类方法,将分数添加20分
         System.out.println("before userService.logon()..");
         service.logon("tom");
         System.out.println("after userService.logon()..");
