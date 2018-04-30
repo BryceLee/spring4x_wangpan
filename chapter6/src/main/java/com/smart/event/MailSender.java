@@ -6,16 +6,16 @@ import org.springframework.context.ApplicationContextAware;
 
 public class MailSender implements ApplicationContextAware {
 
-	private ApplicationContext ctx ;
+    private ApplicationContext ctx;
 
-	public void setApplicationContext(ApplicationContext ctx)
-			throws BeansException {
-		this.ctx = ctx;
+    @Override
+    public void setApplicationContext(ApplicationContext ctx) throws BeansException {
+        this.ctx = ctx;
+    }
 
-	}	
-	public void sendMail(String to){
-		System.out.println("MailSender:模拟发送邮件...");
-		MailSendEvent mse = new MailSendEvent(this.ctx,to);
-		ctx.publishEvent(mse);
-	}
+    public void sendMail(String to) {
+        System.out.println("MailSender:模拟发送邮件...");
+        MailSendEvent mse = new MailSendEvent(ctx, to);
+        ctx.publishEvent(mse);
+    }
 }
