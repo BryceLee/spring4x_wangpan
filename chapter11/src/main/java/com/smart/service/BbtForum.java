@@ -13,10 +13,12 @@ import com.smart.domain.Topic;
 @Service
 @Transactional
 public class BbtForum {
+
+    @Autowired
     public ForumDao forumDao;
-
+    @Autowired
     public TopicDao topicDao;
-
+    @Autowired
     public PostDao postDao;
 
     public void addTopic(Topic topic) throws Exception {
@@ -39,18 +41,4 @@ public class BbtForum {
         return forumDao.getForumNum();
     }
 
-    @Autowired
-    public void setForumDao(ForumDao forumDao) {
-        this.forumDao = forumDao;
-    }
-
-    @Autowired
-    public void setPostDao(PostDao postDao) {
-        this.postDao = postDao;
-    }
-
-    @Autowired
-    public void setTopicDao(TopicDao topicDao) {
-        this.topicDao = topicDao;
-    }
 }
