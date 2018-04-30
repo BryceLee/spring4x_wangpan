@@ -1,6 +1,5 @@
 package com.smart.nestcall;
 
-import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -56,13 +55,11 @@ public class UserService extends BaseService {
 
         JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("jdbcTemplate");
         jdbcTemplate.execute("DELETE FROM t_user WHERE user_name='tom'");
-        BasicDataSource basicDataSource = (BasicDataSource) jdbcTemplate.getDataSource();
         // 插入一条记录，初始分数为10
         String sql = "INSERT INTO t_user(user_name, password, score, last_logon_time) VALUES('tom', '123456', 10, "
                 + System.currentTimeMillis() + ")";
         jdbcTemplate.execute(sql);
 
-        // 调用工作在无事务环境下的服务类方法,将分数添加20分
         System.out.println("before userService.logon method...");
         service.logon("tom");
         System.out.println("after userService.logon method...");
