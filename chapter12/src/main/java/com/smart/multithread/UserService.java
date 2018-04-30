@@ -77,16 +77,15 @@ public class UserService extends BaseService {
                 + System.currentTimeMillis() + ")";
         jdbcTemplate.execute(sql);
 
-        // 调用工作在无事务环境下的服务类方法,将分数添加20分
         System.out.println("before userService.logon method...");
         service.logon("tom");
         System.out.println("after userService.logon method...");
-        jdbcTemplate.execute("DELETE FROM t_user WHERE user_name='tom'");
 
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        jdbcTemplate.execute("DELETE FROM t_user WHERE user_name='tom'");
     }
 }
