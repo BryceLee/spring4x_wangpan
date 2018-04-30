@@ -11,12 +11,13 @@ import com.smart.domain.Forum;
 
 @Service
 public class ForumService1 {
+
     public ForumDao forumDao;
     public TransactionTemplate template;
 
     public void addForum(final Forum forum) {
-
         template.execute(new TransactionCallbackWithoutResult() {
+            @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
                 forumDao.addForum(forum);
             }
