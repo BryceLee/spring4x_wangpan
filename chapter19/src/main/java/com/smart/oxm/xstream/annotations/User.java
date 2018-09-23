@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
@@ -13,86 +12,87 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("user")
 public class User {
-	@XStreamAsAttribute
-	@XStreamAlias("id")
-	private int userId;
-	
-	@XStreamAlias("username")
-	private String userName;
-	
-	@XStreamAlias("password")
-	private String password;
-	
-	@XStreamAlias("credits")
-	private int credits;
-	
-	@XStreamOmitField
-	@XStreamAlias("lastIp")
-	private String lastIp;
 
-	@XStreamConverter(DateConverter.class)
-	private Date lastVisit;
+    @XStreamAsAttribute
+    @XStreamAlias("id")
+    private int userId;
 
-	@XStreamImplicit
-	private List logs;
+    @XStreamAlias("username")
+    private String userName;
 
-	public int getUserId() {
-		return userId;
-	}
+    @XStreamAlias("password")
+    private String password;
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    @XStreamAlias("credits")
+    private int credits;
 
-	public String getUserName() {
-		return userName;
-	}
+    @XStreamOmitField
+    @XStreamAlias("lastIp")
+    private String lastIp;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    @XStreamConverter(DateConverter.class)
+    private Date lastVisit;
 
-	public String getPassword() {
-		return password;
-	}
+    @XStreamImplicit
+    private List logs;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public int getUserId() {
+        return userId;
+    }
 
-	public int getCredits() {
-		return credits;
-	}
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-	public void setCredits(int credits) {
-		this.credits = credits;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public String getLastIp() {
-		return lastIp;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public void setLastIp(String lastIp) {
-		this.lastIp = lastIp;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public Date getLastVisit() {
-		return lastVisit;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setLastVisit(Date lastVisit) {
-		this.lastVisit = lastVisit;
-	}
+    public int getCredits() {
+        return credits;
+    }
 
-	public void addLoginLog(LoginLog log) {
-		if (this.logs == null) {
-			logs = new ArrayList<LoginLog>();
-		}
-		logs.add(log);
-	}
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
 
-	public List<LoginLog> getLogs() {
-		return logs;
-	}
+    public String getLastIp() {
+        return lastIp;
+    }
+
+    public void setLastIp(String lastIp) {
+        this.lastIp = lastIp;
+    }
+
+    public Date getLastVisit() {
+        return lastVisit;
+    }
+
+    public void setLastVisit(Date lastVisit) {
+        this.lastVisit = lastVisit;
+    }
+
+    public void addLoginLog(LoginLog log) {
+        if (this.logs == null) {
+            logs = new ArrayList<LoginLog>();
+        }
+        logs.add(log);
+    }
+
+    public List<LoginLog> getLogs() {
+        return logs;
+    }
 
 }

@@ -1,19 +1,13 @@
-<com.smart.domain.User>
-  <userId>1</userId>
-  <userName>xstream</userName>
+<user id="1">
+  <username>xstream</username>
+  <password>123456</password>
   <credits>0</credits>
-  <logs>
-    <com.smart.domain.LoginLog>
-      <loginLogId>0</loginLogId>
-      <userId>0</userId>
-      <ip>192.168.1.91</ip>
-      <loginDate>2016-05-22 12:00:29.436 UTC</loginDate>
-    </com.smart.domain.LoginLog>
-    <com.smart.domain.LoginLog>
-      <loginLogId>0</loginLogId>
-      <userId>0</userId>
-      <ip>192.168.1.92</ip>
-      <loginDate>2016-05-22 12:00:29.436 UTC</loginDate>
-    </com.smart.domain.LoginLog>
-  </logs>
-</com.smart.domain.User>
+  <loginLog id="0" userId="0">
+    <ip>192.168.52.78</ip>
+    <loginDate>2018-09-23 16:57:43</loginDate>
+  </loginLog>
+  <loginLog id="0" userId="0">
+    <ip>192.168.52.79</ip>
+    <loginDate>2018-09-23 16:57:43</loginDate>
+  </loginLog>
+</user>
